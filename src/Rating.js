@@ -3,18 +3,21 @@ import { useRef } from "react"
 export default function Rating({ setRating }) {
   const itemsRef = useRef([])
   var lasti = null
+//   let ratingArray = [1,2,3,4,5]
+  let ratingArray = Array.from("12345")
+
+
 
   const handleClick = (i) => {
     if (lasti != null) itemsRef.current[lasti-1].classList.remove("active")
     itemsRef.current[i - 1].classList.add("active")
     lasti = i
-    //setRating(i)
+    setRating(i)
   }
 
   return (
     <main class="container max-w-[400px] max-h-screen flex flex-col rounded-3xl p-9 gap-6 bg-gradient-to-t from-Very-Dark-Blue to-Dark-Blue">
       <div class="place-self-start p-3 mb-2 rounded-full bg-Dark-Blue w-12 drop-shadow-xl">
-        {" "}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -34,7 +37,7 @@ export default function Rating({ setRating }) {
         appreciated to help us improve our offering!
       </p>
       <div id="rating" class="flex min-h-16 gap-4 justify-between">
-        {[1, 2, 3, 4, 5].map((i) => {
+        {ratingArray.map((i) => {
           return (
             <div
               onClick={() => handleClick(i)}
